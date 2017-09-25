@@ -14,7 +14,7 @@ describe SecurityCode do
   describe '#one' do
     one_movement =  described_class.new.one(:d)
     it 'has down movement' do
-      expect(one_movement).to eq(3)
+      expect(one_movement).to eq(4)
     end
   end
 
