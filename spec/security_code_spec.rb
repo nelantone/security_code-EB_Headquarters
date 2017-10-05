@@ -2,10 +2,6 @@
 
 describe SecurityCode do
   let(:keypad)     { (1..9).to_a.freeze }
-  let(:move_down)  { described_class.new.one(:d) }
-  let(:move_up)    {  }
-  let(:move_right) {  }
-  let(:move_left)  {  }
 
   it 'is available as described_class' do
     expect(described_class).to eq(described_class)
@@ -219,5 +215,12 @@ describe SecurityCode do
     first_list_line = [1, 3, 7, 9, 2, 9]
     initial_list_line = [5] + first_list_line
     expect(initial_list_line.first).to eq(5)
+  end
+
+  context 'when we move we transfor the digit in the related method-number' do
+    it '#digit_matcher' do
+      last_list_line = 2
+      expect(described_class.digit_matcher(last_list_line)).to eql(:two)
+    end
   end
 end

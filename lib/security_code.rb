@@ -109,4 +109,7 @@ class SecurityCode
       9
     end
   end
+
+  def self.digit_matcher(number)
+  end
 end
