@@ -110,26 +110,13 @@ class SecurityCode
     end
   end
 
-  def self.digit_matcher(number)
-    case number
-    when 1
-      :one
-    when 2
-      :two
-    when 3
-      :three
-    when 4
-      :four
-    when 5
-      :five
-    when 6
-      :six
-    when 7
-      :seven
-    when 8
-      :eight
-    when 9
-      :nine
-    end
+  def self.digit_to_method(number)
+    method_number = { one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9 }
+    method_number.key(number)
+  end
+
+  def digit_method_processor(number, movement)
+    method_number = SecurityCode.digit_to_method(number).to_s
+    SecurityCode.new.send(method_number, movement)
   end
 end
