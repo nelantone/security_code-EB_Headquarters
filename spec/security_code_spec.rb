@@ -8,7 +8,7 @@ describe SecurityCode do
   end
 
   it 'is a 9 characters array' do
-    expect(keypad.size).to eql(9)
+    expect(keypad.size).to be(9)
   end
 
   describe '#one' do
@@ -18,16 +18,16 @@ describe SecurityCode do
     move_left  = described_class.new.one(:l)
 
     it 'moves down to 4' do
-      expect(move_down).to eql(4)
+      expect(move_down).to be(4)
     end
 
     it 'moves right to 2' do
-      expect(move_right).to eql(2)
+      expect(move_right).to be(2)
     end
 
     it 'is not moving' do
-      expect(move_up).to eql(1)
-      expect(move_left).to eql(1)
+      expect(move_up).to be(1)
+      expect(move_left).to be(1)
     end
   end
 
@@ -37,21 +37,20 @@ describe SecurityCode do
     move_right = described_class.new.two(:r)
     move_left  = described_class.new.two(:l)
 
-
     it 'moves down to 5' do
-      expect(move_down).to eql(5)
+      expect(move_down).to be(5)
     end
 
     it 'moves right to 3' do
-      expect(move_right).to eql(3)
+      expect(move_right).to be(3)
     end
 
     it 'moves left to 1' do
-      expect(move_left).to eql(1)
+      expect(move_left).to be(1)
     end
 
     it 'is not moving' do
-      expect(move_up).to eql(2)
+      expect(move_up).to be(2)
     end
   end
 
@@ -61,19 +60,17 @@ describe SecurityCode do
     move_right = described_class.new.three(:r)
     move_left  = described_class.new.three(:l)
 
-
     it 'moves down to 6' do
-      expect(move_down).to eql(6)
+      expect(move_down).to be(6)
     end
 
-
     it 'moves left to 2' do
-      expect(move_left).to eql(2)
+      expect(move_left).to be(2)
     end
 
     it 'is not moving' do
-      expect(move_up).to eql(3)
-      expect(move_right).to eql(3)
+      expect(move_up).to be(3)
+      expect(move_right).to be(3)
     end
   end
 
@@ -84,19 +81,19 @@ describe SecurityCode do
     move_left  = described_class.new.four(:l)
 
     it 'moves down to 7' do
-      expect(move_down).to eql(7)
+      expect(move_down).to be(7)
     end
 
     it 'moves right to 5' do
-      expect(move_right).to eql(5)
+      expect(move_right).to be(5)
     end
 
     it 'moves up to 1' do
-      expect(move_up).to eql(1)
+      expect(move_up).to be(1)
     end
 
     it 'is not moving' do
-      expect(move_left).to eql(4)
+      expect(move_left).to be(4)
     end
   end
 
@@ -106,21 +103,20 @@ describe SecurityCode do
     move_right = described_class.new.five(:r)
     move_left  = described_class.new.five(:l)
 
-
     it 'moves down to 8' do
-      expect(move_down).to eql(8)
+      expect(move_down).to be(8)
     end
 
     it 'moves left to 4' do
-      expect(move_left).to eql(4)
+      expect(move_left).to be(4)
     end
 
     it 'moves right to 6' do
-      expect(move_right).to eql(6)
+      expect(move_right).to be(6)
     end
 
     it 'moves up to 2' do
-      expect(move_up).to eql(2)
+      expect(move_up).to be(2)
     end
   end
 
@@ -130,21 +126,20 @@ describe SecurityCode do
     move_right = described_class.new.six(:r)
     move_left  = described_class.new.six(:l)
 
-
     it 'moves down to 9' do
-      expect(move_down).to eql(9)
+      expect(move_down).to be(9)
     end
 
     it 'moves left to 5' do
-      expect(move_left).to eql(5)
+      expect(move_left).to be(5)
     end
 
     it 'moves up to 3' do
-      expect(move_up).to eql(3)
+      expect(move_up).to be(3)
     end
 
     it 'is not moving' do
-      expect(move_right).to eql(6)
+      expect(move_right).to be(6)
     end
   end
 
@@ -155,16 +150,16 @@ describe SecurityCode do
     move_left  = described_class.new.seven(:l)
 
     it 'moves left to 8' do
-      expect(move_right).to eql(8)
+      expect(move_right).to be(8)
     end
 
     it 'moves up to 4' do
-      expect(move_up).to eql(4)
+      expect(move_up).to be(4)
     end
 
     it 'is not moving' do
-      expect(move_down).to eql(7)
-      expect(move_left).to eql(7)
+      expect(move_down).to be(7)
+      expect(move_left).to be(7)
     end
   end
 
@@ -175,19 +170,19 @@ describe SecurityCode do
     move_left  = described_class.new.eight(:l)
 
     it 'moves left to 7' do
-      expect(move_right).to eql(9)
+      expect(move_left).to be(7)
     end
 
     it 'moves up to 5' do
-      expect(move_up).to eql(5)
+      expect(move_up).to be(5)
     end
 
     it 'moves right to 9' do
-      expect(move_right).to eql(9)
+      expect(move_right).to be(9)
     end
 
     it 'is not moving' do
-      expect(move_down).to eql(8)
+      expect(move_down).to be(8)
     end
   end
 
@@ -198,16 +193,16 @@ describe SecurityCode do
     move_left  = described_class.new.nine(:l)
 
     it 'moves up to 6' do
-      expect(move_up).to eql(6)
+      expect(move_up).to be(6)
     end
 
     it 'moves left to 8' do
-      expect(move_left).to eql(8)
+      expect(move_left).to be(8)
     end
 
     it 'is not moving' do
-      expect(move_down).to eql(9)
-      expect(move_right).to eql(9)
+      expect(move_down).to be(9)
+      expect(move_right).to be(9)
     end
   end
 
@@ -217,10 +212,26 @@ describe SecurityCode do
     expect(initial_list_line.first).to eq(5)
   end
 
-  context 'when we move we transfor the digit in the related method-number' do
-    it '#digit_matcher' do
+  context 'We transfor the digit in the related method-number' do
+    it '#digit_to_method' do
       last_list_line = 2
-      expect(described_class.digit_matcher(last_list_line)).to eql(:two)
+      expect(described_class.digit_to_method(last_list_line)).to be(:two)
+    end
+  end
+
+  context 'When we save the digit_matcher and we use it on the next movement' do
+    it 'keeps to #digit_method_processor to same position' do
+      number = 2
+      movement = :u
+
+      expect(described_class.new.digit_method_processor(number, movement)).to be(2)
+    end
+
+    it 'moves #digit_method_processor to a correct possition' do
+      number = 4
+      movement = :u
+
+      expect(described_class.new.digit_method_processor(number, movement)).to be(1)
     end
   end
 end
