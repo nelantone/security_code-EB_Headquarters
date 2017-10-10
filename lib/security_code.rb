@@ -120,32 +120,37 @@ class SecurityCode
     SecurityCode.new.send(method_number, movement)
   end
 
-  def self.array_splitter(line)
-    line.to_s.split('').map { |a| a.to_sym.downcase }.to_a
-  end
+  # def self.array_splitter(line)
+  #   array_splitted = line.split('').map { |a| a.to_sym.downcase }.to_a
+  #   binding.pry
+  # end
 
-  def self.line_result(document)
-    if full_movements(document).first
+  def self.line_results(document)
+    lines = document.split(/\n/)
+    movement_lines = []
+    result_array = []
+
+    lines.each { |line| movement_lines << line.split('').map { |a| a.to_sym.downcase }.to_a }
+
+    movement_lines.map do |movements|
       number ||= 5
-    else
-      number = password_code(document).last
+      movements.each do |movement|
+        number = digit_method_processor(number, movement)
+      end
+      result_array << number
     end
-
-    result_array = full_movements(document).map do |movement|
-      number = digit_method_processor(number, movement)
-    end
-    result_array.last
+    result_array
   end
 
   def self.password_code(document)
-    full_movements(document)
     security_code = []
     security_code << line_result(document)
   end
 
-  def self.full_movements(document)
-    movement_lines = []
-    lines = document.split(/\n/)
-    lines.each { |line| movement_lines << line.split('').to_a }
-  end
+  # def self.full_movements(document)
+  #   movement_lines = []
+  # lines = document.split(/\n/)
+  # lines.each { |line| movement_lines << line.split('').map { |a| a.to_sym.downcase }.to_a }
+  # movement_lines
+  # end
 end

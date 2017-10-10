@@ -236,25 +236,24 @@ describe SecurityCode do
   end
 
   context 'when we pass the initial full line as an array' do
-    document = "URDL\nLUURRDDD\nLLLURULL"
+    document = "URD\nLUURRDDD\nLLLURULL"
     it '#line_result' do
-      expect(described_class.line_result(document)).to be_a(Integer)
-      expect(described_class.line_result(document)).to be(5)
+      expect(described_class.line_results(document)).to eql([6, 9, 1])
     end
   end
 
-  context 'when we have a text' do
-    it 'is #full_movements an array ' do
-      document = "URDL\nLUURRDDD\nLLLURULL"
-      expect(described_class.full_movements(document)).to be_a(Array)
-    end
+  # context 'when we have a text' do
+  #   it 'is #full_movements an array ' do
+  #     document = "URDL\nLUURRDDD\nLLLURULL"
+  #     expect(described_class.full_movements(document)).to be_a(Array)
+  #   end
 
-    it '#full_movements is an array of arrays for each line' do
-      document = "URDL\nLUURRDDD\nLLLURULL"
+  #   it '#full_movements is an array of arrays for each line' do
+  #     document = "URDL\nLUURRDDD\nLLLURULL"
 
-      described_class.full_movements(document) do
-        is_expected.to all(be_an(String))
-      end
-    end
-  end
+  #     described_class.full_movements(document) do
+  #       is_expected.to all(be_an(String))
+  #     end
+  #   end
+  # end
 end
