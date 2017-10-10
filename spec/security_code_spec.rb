@@ -224,14 +224,37 @@ describe SecurityCode do
       number = 2
       movement = :u
 
-      expect(described_class.new.digit_method_processor(number, movement)).to be(2)
+      expect(described_class.digit_method_processor(number, movement)).to be(2)
     end
 
     it 'moves #digit_method_processor to a correct possition' do
       number = 4
       movement = :u
 
-      expect(described_class.new.digit_method_processor(number, movement)).to be(1)
+      expect(described_class.digit_method_processor(number, movement)).to be(1)
+    end
+  end
+
+  context 'when we pass the initial full line as an array' do
+    document = "URDL\nLUURRDDD\nLLLURULL"
+    it '#line_result' do
+      expect(described_class.line_result(document)).to be_a(Integer)
+      expect(described_class.line_result(document)).to be(5)
+    end
+  end
+
+  context 'when we have a text' do
+    it 'is #full_movements an array ' do
+      document = "URDL\nLUURRDDD\nLLLURULL"
+      expect(described_class.full_movements(document)).to be_a(Array)
+    end
+
+    it '#full_movements is an array of arrays for each line' do
+      document = "URDL\nLUURRDDD\nLLLURULL"
+
+      described_class.full_movements(document) do
+        is_expected.to all(be_an(String))
+      end
     end
   end
 end

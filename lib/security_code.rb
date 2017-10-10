@@ -115,8 +115,37 @@ class SecurityCode
     method_number.key(number)
   end
 
-  def digit_method_processor(number, movement)
+  def self.digit_method_processor(number, movement)
     method_number = SecurityCode.digit_to_method(number).to_s
     SecurityCode.new.send(method_number, movement)
+  end
+
+  def self.array_splitter(line)
+    line.to_s.split('').map { |a| a.to_sym.downcase }.to_a
+  end
+
+  def self.line_result(document)
+    if full_movements(document).first
+      number ||= 5
+    else
+      number = password_code(document).last
+    end
+
+    result_array = full_movements(document).map do |movement|
+      number = digit_method_processor(number, movement)
+    end
+    result_array.last
+  end
+
+  def self.password_code(document)
+    full_movements(document)
+    security_code = []
+    security_code << line_result(document)
+  end
+
+  def self.full_movements(document)
+    movement_lines = []
+    lines = document.split(/\n/)
+    lines.each { |line| movement_lines << line.split('').to_a }
   end
 end
