@@ -1,6 +1,6 @@
 # README -- Bathroom Code Decryptor --
 
-### Hi for using  your bathroom code decryptor please run:
+### Hi! For using  your bathroom code decryptor please run:
 #### ruby bathroom_code_decryptor.rb
 
 ##### As a rubyist you are, we expect you have ruby installed
