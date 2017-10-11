@@ -120,20 +120,20 @@ class SecurityCode
     SecurityCode.new.send(method_number, movement)
   end
 
-  # def self.array_splitter(line)
-  #   array_splitted = line.split('').map { |a| a.to_sym.downcase }.to_a
-  #   binding.pry
-  # end
-
-  def self.line_results(document)
+  def self.movement_lines_splitter(document)
     lines = document.split(/\n/)
     movement_lines = []
+    lines.each { |line| movement_lines << line.split('').map { |a| a.to_sym.downcase }.to_a }
+    movement_lines
+  end
+
+  def self.line_results(document)
     result_array = []
 
-    lines.each { |line| movement_lines << line.split('').map { |a| a.to_sym.downcase }.to_a }
-
-    movement_lines.map do |movements|
+    movement_lines_splitter(document).map do |movements|
+      number = result_array.last unless result_array.empty?
       number ||= 5
+
       movements.each do |movement|
         number = digit_method_processor(number, movement)
       end
@@ -144,13 +144,6 @@ class SecurityCode
 
   def self.password_code(document)
     security_code = []
-    security_code << line_result(document)
+    security_code << line_results(document)
   end
-
-  # def self.full_movements(document)
-  #   movement_lines = []
-  # lines = document.split(/\n/)
-  # lines.each { |line| movement_lines << line.split('').map { |a| a.to_sym.downcase }.to_a }
-  # movement_lines
-  # end
 end
