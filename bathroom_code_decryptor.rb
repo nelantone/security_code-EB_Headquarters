@@ -6,7 +6,7 @@ gets.chomp
 puts 'Here is your bathroom code :'
 document = File.read('movements.txt')
 puts '=========='
-SecurityCode.password_code(document).first.each do |digit|
+SecurityCode.password_decoder(document).each do |digit|
   print " #{digit} "
 end
 puts

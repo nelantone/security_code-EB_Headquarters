@@ -127,7 +127,7 @@ class SecurityCode
     movement_lines
   end
 
-  def self.line_results(document)
+  def self.password_decoder(document)
     result_array = []
 
     movement_lines_splitter(document).map do |movements|
@@ -140,10 +140,5 @@ class SecurityCode
       result_array << number
     end
     result_array
-  end
-
-  def self.password_code(document)
-    security_code = []
-    security_code << line_results(document)
   end
 end
